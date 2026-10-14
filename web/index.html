@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+  <title>FoodThings</title>
+
+  <!-- App icon / logo -->
+  <link rel="icon" href="assets/logo/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="assets/logo/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1B2316" media="(prefers-color-scheme: dark)" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="FoodThings" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS v3 with Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Tailwind Configuration from Stitch -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#F4F4F1",
+            "inverse-surface": "#2e312a",
+            "mascot-outline": "#18301F",
+            "card": "#FFFFFF",
+            "on-error-container": "#93000a",
+            "primary-tint": "#CFE8A0",
+            "inverse-primary": "#99d93d",
+            "on-secondary-fixed-variant": "#245100",
+            "tertiary-fixed": "#d9e8bd",
+            "surface": "#f9faf0",
+            "on-secondary-container": "#39710c",
+            "warning-soft": "#FEF3C7",
+            "protein": "#3B82F6",
+            "border": "#E7E9E2",
+            "surface-container-highest": "#e2e3d9",
+            "warning": "#92400E",
+            "on-background": "#1a1d16",
+            "secondary": "#336b04",
+            "ring": "#3F7D0F",
+            "mascot-body": "#B0D030",
+            "surface-bright": "#f9faf0",
+            "on-secondary-fixed": "#0a2000",
+            "on-primary": "#12210A",
+            "destructive": "#DC2626",
+            "outline-variant": "#c2cab1",
+            "tertiary": "#566341",
+            "on-tertiary-fixed-variant": "#3f4b2b",
+            "tertiary-container": "#b0bf96",
+            "on-primary-fixed-variant": "#314f00",
+            "on-surface": "#1a1d16",
+            "on-tertiary-container": "#414e2e",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#bdcca2",
+            "on-tertiary-fixed": "#141f04",
+            "muted-foreground": "#5B6356",
+            "primary-fixed-dim": "#99d93d",
+            "surface-tint": "#426900",
+            "fat": "#EF4444",
+            "primary-container": "#8ccb2f",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "primary": "#426900",
+            "on-error": "#ffffff",
+            "outline": "#727a65",
+            "on-primary-fixed": "#112000",
+            "secondary-fixed-dim": "#97d86a",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#f0f2e7",
+            "primary-fixed": "#b4f657",
+            "surface-container-low": "#f3f5ea",
+            "on-primary-container": "#335200",
+            "secondary-container": "#b2f583",
+            "surface-container": "#edefe4",
+            "secondary-fixed": "#b2f583",
+            "surface-container-high": "#e7e9df",
+            "surface-dim": "#d9dbd1",
+            "carb": "#F59E0B",
+            "surface-variant": "#e2e3d9",
+            "on-surface-variant": "#424937"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-display": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "numeral-display": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-display-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-display": ["52px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+            "numeral-display": ["48px", { "lineHeight": "48px", "fontWeight": "800" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-display-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-lg": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/components.css?v=39" />
+  <link rel="stylesheet" href="css/mascot-animations.css?v=3" />
+  <link rel="stylesheet" href="css/background.css?v=6" />
+
+  <link rel="preload" as="image" href="assets/mascot/limo-menyapa-hd.webp" />
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .pb-safe {
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+
+      100% {
+        top: 100%;
+      }
+    }
+
+    .animate-scan {
+      animation: scan 1.8s linear infinite;
+      position: absolute;
+    }
+
+    .shimmer-box {
+      background: linear-gradient(90deg, #e7e9e2 25%, #f3f5ea 50%, #e7e9e2 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+
+    .transition-transform {
+      transition: transform 0.2s ease;
+    }
+  </style>
+
+  <style>
+    /* Splash tetap memakai CSS mandiri agar tampil sebelum Tailwind dimuat. */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: max(32px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 12% 26%, rgba(255, 255, 255, 0.2), transparent 30%),
+        radial-gradient(ellipse at 88% 72%, rgba(255, 225, 142, 0.2), transparent 32%),
+        radial-gradient(ellipse at 50% 48%, rgba(219, 250, 155, 0.38), transparent 42%),
+        #7CC73B;
+      color: #12210A;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      -webkit-user-select: none;
+      user-select: none;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    #splash > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Atas: brand ─────────────────────────────────────────── */
+    #splash .splash-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translateY(42px);
+    }
+
+    #splash .splash-glyph {
+      width: 50px;
+      height: 50px;
+    }
+
+    #splash .splash-glyph svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    #splash .splash-wordmark {
+      margin: 10px 0 0;
+      font-size: 28px;
+      line-height: 34px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    #splash .splash-tagline {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 500;
+      opacity: 0.7;
+      text-align: center;
+    }
+
+    /* ── Tengah: info singkat dan Limo ─────────────────────── */
+    #splash .splash-hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      margin: 12px 0;
+    }
+
+    #splash .splash-hero::after {
+      position: absolute;
+      top: 47%;
+      right: 12%;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #FFE08A;
+      box-shadow: -246px 74px 0 -3px rgba(255, 255, 255, 0.9),
+        -275px -70px 0 -4px rgba(18, 33, 10, 0.55);
+      content: "";
+      animation: splashTwinkle 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    #splash .splash-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+    }
+
+    #splash .splash-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(18, 33, 10, 0.08);
+      border-radius: 9999px;
+      padding: 7px 10px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #12210A;
+      font-size: 11px;
+      line-height: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(18, 33, 10, 0.08);
+      animation: splashChipFloat 3.2s ease-in-out infinite;
+    }
+
+    #splash .splash-chip:nth-child(2) {
+      border-color: rgba(164, 95, 0, 0.16);
+      background: rgba(255, 244, 204, 0.96);
+      animation-delay: -1.6s;
+    }
+
+    #splash .splash-chip:nth-child(2) svg {
+      color: #A45F00;
+    }
+
+    #splash .splash-chip svg {
+      display: block;
+      width: 14px;
+      height: 14px;
+      color: #426900;
+    }
+
+    #splash .splash-mascot {
+      position: relative;
+      flex: 0 0 auto;
+      height: clamp(150px, 29vh, 224px);
+      width: min(72vw, 280px);
+    }
+
+    #splash .splash-mascot picture {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    #splash .splash-mascot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    #splash .splash-message {
+      max-width: 280px;
+      margin: 0;
+      color: #12210A;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 500;
+      opacity: 0.7;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    /* ── Bawah: indikator memuat ────────────────────────────── */
+    #splash .splash-bottom {
+      display: flex;
+      align-items: center;
+    }
+
+    #splash .splash-loader {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #splash .splash-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 9999px;
+      background: #12210A;
+    }
+
+    @keyframes splashDotPulse {
+
+      0%,
+      80%,
+      100% {
+        opacity: 0.25;
+        transform: scale(0.9);
+      }
+      40% {
+        opacity: 0.85;
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes splashChipFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes splashTwinkle {
+      0%, 100% {
+        opacity: 0.55;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    .splash-dot:nth-child(1) {
+      animation: splashDotPulse 1.4s ease-in-out infinite 0s;
+    }
+
+    .splash-dot:nth-child(2) {
+      animation: splashDotPulse 1.4s ease-in-out infinite 0.2s;
+    }
+
+    .splash-dot:nth-child(3) {
+      animation: splashDotPulse 1.4s ease-in-out infinite 0.4s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #splash .splash-dot {
+        animation: none;
+        opacity: 0.6;
+      }
+
+      #splash .splash-hero::after,
+      #splash .splash-chip {
+        animation: none;
+      }
+    }
+
+    @media (max-height: 640px) {
+      #splash {
+        padding-top: max(20px, env(safe-area-inset-top));
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+      }
+
+      #splash .splash-mascot {
+        height: clamp(120px, 24vh, 160px);
+      }
+
+      #splash .splash-hero {
+        gap: 8px;
+        margin: 8px 0;
+      }
+
+      #splash .splash-chip {
+        padding: 5px 8px;
+        font-size: 10px;
+      }
+
+      #splash .splash-glyph {
+        width: 42px;
+        height: 42px;
+      }
+
+      #splash .splash-brand {
+        transform: translateY(30px);
+      }
+
+      #splash .splash-wordmark {
+        margin-top: 6px;
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-tint selection:text-on-primary">
+
+  <!-- Ambient background (fixed, behind everything) -->
+  <div id="bg-decor" aria-hidden="true"></div>
+
+  <!-- Splash tampil seketika, lalu otomatis masuk ke aplikasi. -->
+  <div id="splash">
+
+    <!-- Identitas aplikasi -->
+    <div class="splash-brand">
+      <div class="splash-glyph">
+        <svg fill="none" viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 64 24 C 64 24 74 15 84 21 C 88 24 87 31 82 34 C 77 36 71 33 69 29 Z" fill="#12210A"></path>
+          <circle cx="52" cy="54" fill="none" r="38" stroke="#12210A" stroke-width="6.5"></circle>
+          <line stroke="#12210A" stroke-linecap="round" stroke-width="4.5" x1="52" x2="52" y1="28" y2="35"></line>
+          <line stroke="#12210A" stroke-linecap="round" stroke-width="4.5" x1="52" x2="52" y1="73" y2="80"></line>
+          <line stroke="#12210A" stroke-linecap="round" stroke-width="4.5" x1="26" x2="33" y1="54" y2="54"></line>
+          <line stroke="#12210A" stroke-linecap="round" stroke-width="4.5" x1="71" x2="78" y1="54" y2="54"></line>
+          <circle cx="52" cy="54" fill="none" r="20" stroke="#12210A" stroke-width="5.5"></circle>
+          <circle cx="52" cy="54" fill="#12210A" r="10"></circle>
+          <circle cx="49.5" cy="51.5" fill="#7CC73B" r="2.8"></circle>
+          <circle cx="74" cy="39" fill="#12210A" r="2.5"></circle>
+        </svg>
+      </div>
+      <h1 class="splash-wordmark">FoodThings</h1>
+      <p class="splash-tagline">Scan makananmu, hitung kalorinya</p>
+    </div>
+
+    <!-- Info fitur dan Limo -->
+    <div class="splash-hero">
+      <div class="splash-chips">
+        <div class="splash-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+          <span>Cukup 1 Foto</span>
+        </div>
+        <div class="splash-chip">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 3 14h8l-1 8 10-12h-8l1-8z"></path>
+          </svg>
+          <span>Estimasi Instan</span>
+        </div>
+      </div>
+      <div class="splash-mascot">
+        <picture>
+          <source srcset="assets/mascot/limo-melambai-splash-rest.webp" media="(prefers-reduced-motion: reduce)" />
+          <img id="splash-limo" src="assets/mascot/limo-menyapa-hd.webp"
+            alt="Limo menyapa dengan melambaikan tangan" width="360" height="360" decoding="async"
+            fetchpriority="high" draggable="false" />
+        </picture>
+      </div>
+      <p class="splash-message">Yuk, mulai hidup lebih sehat bersama Limo!</p>
+    </div>
+
+    <!-- Indikator memuat -->
+    <div class="splash-bottom">
+      <div class="splash-loader" aria-hidden="true">
+        <span class="splash-dot"></span>
+        <span class="splash-dot"></span>
+        <span class="splash-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Penutup splash mandiri (tetap bekerja walau modul JS gagal termuat). -->
+  <script>
+    var splash = document.getElementById('splash');
+    window.__ftSplashClose = function () {
+      var s = document.getElementById('splash');
+      if (!s || s.__closing) return;
+      s.__closing = true;
+      s.style.opacity = '0';
+      setTimeout(function () { s.remove(); }, 300);
+    };
+    // Jaring pengaman: bila modul JS utama gagal, splash tetap hilang sendiri
+    // (dipasang lebih lama dari batas normal agar tidak menutup terlalu cepat).
+    setTimeout(window.__ftSplashClose, 7000);
+    // Ketuk di mana saja untuk langsung masuk.
+    if (splash) splash.addEventListener('click', window.__ftSplashClose);
+  </script>
+
+  <svg width="0" height="0" class="ft-header-icons" aria-hidden="true">
+    <defs>
+      <symbol id="ft-icon-calendar" viewBox="0 0 24 24"><rect class="ft-icon-fill" x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+      <symbol id="ft-icon-gear" viewBox="0 0 24 24"><path class="ft-icon-fill" d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="ft-icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="ft-meal-icon-sarapan" viewBox="0 0 24 24"><path d="M12 2v8M4.93 10.93l1.41 1.41M2 18h2M20 18h2M19.07 10.93l-1.41 1.41M22 22H2M8 6l4-4 4 4M16 18a4 4 0 0 0-8 0"/></symbol>
+      <symbol id="ft-meal-icon-siang" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+      <symbol id="ft-meal-icon-malam" viewBox="0 0 24 24"><path class="ft-meal-icon-fill" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+      <symbol id="ft-meal-icon-camilan" viewBox="0 0 24 24"><path class="ft-meal-icon-fill" d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06ZM10 2c1 .5 2 2 2 5"/></symbol>
+    </defs>
+  </svg>
+
+  <div id="app" class="relative z-10 w-full max-w-[375px] mx-auto h-[100dvh] pb-[136px] flex flex-col">
+    <!-- Main content injection target -->
+    <div id="main-content" class="w-full flex-1"></div>
+
+    <div class="navwrap" id="bottom-nav">
+      <nav class="nav" id="nav" aria-label="Navigasi utama">
+        <div class="bar"></div>
+
+        <div class="bubble" aria-hidden="true">
+          <svg class="on" viewBox="0 0 24 24"><rect class="f" x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24"><path class="f" d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          <svg viewBox="0 0 24 24"><circle class="f" cx="12" cy="12" r="9"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2"/></svg>
+        </div>
+
+        <div class="tabs">
+          <button class="tab" id="nav-today" type="button" data-route="#/" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg><span>Kalender</span>
+          </button>
+          <button class="tab" id="nav-scan" type="button" data-route="#/scan">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Foto</span>
+          </button>
+          <button class="tab" id="nav-history" type="button" data-route="#/history">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2"/></svg><span>Riwayat</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js?v20261015f"></script>
+</body>
+
+</html>

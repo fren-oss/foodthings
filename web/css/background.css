@@ -1,0 +1,38 @@
+/*
+ * ============================================================
+ *  FoodThings — fresh nutrition green background
+ * ============================================================
+ */
+
+#bg-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(160deg, #A8EFC0 0%, #C9F4A7 52%, #E4FB8E 100%);
+}
+
+body.bg-background {
+  background: transparent;
+}
+
+#bg-decor::before {
+  display: none;
+}
+
+#bg-decor::after {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  #bg-decor {
+    background: #10150B;
+  }
+}
+:root[data-theme="light"] #bg-decor {
+  background: linear-gradient(160deg, #A8EFC0 0%, #C9F4A7 52%, #E4FB8E 100%);
+}
+:root[data-theme="dark"] #bg-decor {
+  background: #10150B;
+}

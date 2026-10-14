@@ -1,0 +1,144 @@
+/*
+ * ============================================================
+ *  FoodThings — Mascot Limo Animation System
+ *  Named animations only (docs/DESIGN.md -> Motion):
+ *    limo-wave · limo-think · limo-hop · limo-shake · limo-bob
+ *  plus a soft cross-fade for pose swaps.
+ *  Only `transform` and `opacity` are animated.
+ *  Everything is disabled under `prefers-reduced-motion`.
+ * ============================================================
+ */
+
+/* ── Base ─────────────────────────────────────────────────── */
+.limo-img {
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.limo-rest {
+  animation: none !important;
+}
+
+/* ── 1. WAVE (limo-salam) ───────────────────────────────────
+   Whole-body sway with a small hop, pivoting at the lower body.
+   Plays once per app-open, then rests.                        */
+@keyframes limo-wave {
+  0%   { transform: rotate(0deg) translateY(0); }
+  12%  { transform: rotate(-6deg) translateY(-4px); }
+  25%  { transform: rotate(5deg) translateY(-2px); }
+  37%  { transform: rotate(-5deg) translateY(-4px); }
+  50%  { transform: rotate(5deg) translateY(-2px); }
+  62%  { transform: rotate(-4deg) translateY(-3px); }
+  75%  { transform: rotate(3deg) translateY(-1px); }
+  88%  { transform: rotate(-2deg) translateY(-2px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+.limo-wave {
+  animation: limo-wave 1.6s ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* ── 2. THINK (limo-mikir) ──────────────────────────────────
+   Slow head-tilt sway with a gentle bob. Loops while loading
+   and stops the moment results or an error arrive (the element
+   is removed from the DOM).                                    */
+@keyframes limo-think {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50%      { transform: rotate(3deg) translateY(-4px); }
+}
+.limo-think {
+  animation: limo-think 2.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* ── 3. HOP (limo-senang / limo-loncat) ─────────────────────
+   One small bounce with a slight squash-and-stretch.          */
+@keyframes limo-hop {
+  0%   { transform: translateY(0) scale(1); }
+  20%  { transform: translateY(0) scale(0.96); }
+  45%  { transform: translateY(-14px) scale(1.04); }
+  70%  { transform: translateY(0) scale(1); }
+  85%  { transform: translateY(0) scale(0.97); }
+  100% { transform: translateY(0) scale(1); }
+}
+.limo-hop {
+  animation: limo-hop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+/* ── 4. SHAKE (limo-kaget) ──────────────────────────────────
+   Quick side-to-side shake for soft errors. Plays once.        */
+@keyframes limo-shake {
+  0%   { transform: translateX(0) rotate(0deg); }
+  15%  { transform: translateX(-5px) rotate(-2deg); }
+  30%  { transform: translateX(5px) rotate(2deg); }
+  45%  { transform: translateX(-4px) rotate(-1.5deg); }
+  60%  { transform: translateX(4px) rotate(1.5deg); }
+  75%  { transform: translateX(-2px) rotate(-1deg); }
+  90%  { transform: translateX(2px) rotate(1deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+.limo-shake {
+  animation: limo-shake 0.55s ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* ── 5. BOB (empty states: limo-salam / semangat / bingung / tidur) ──
+   Idle rise-and-fall. Loops, but JS removes the class after ~10s
+   so it comes to rest instead of animating forever.            */
+@keyframes limo-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.limo-bob {
+  animation: limo-bob 2.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* ── Cross-fade (pose swap) ───────────────────────────────── */
+@keyframes limo-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.limo-enter {
+  animation: limo-enter 0.22s ease-out;
+}
+.limo-fading {
+  opacity: 0;
+  transition: opacity 0.12s ease-in;
+}
+
+/* ── Interactive tap ──────────────────────────────────────── */
+.limo-interactive {
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.limo-interactive:hover { transform: scale(1.05); }
+.limo-interactive:active { transform: scale(0.94); }
+
+/* ── prefers-reduced-motion: everything static ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .limo-wave,
+  .limo-think,
+  .limo-hop,
+  .limo-shake,
+  .limo-bob,
+  .limo-enter {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .limo-fading {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+  .limo-interactive {
+    transition: none !important;
+  }
+  .limo-interactive:hover,
+  .limo-interactive:active {
+    transform: none !important;
+  }
+}
